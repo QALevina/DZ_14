@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.netology.repozitory2.ProductRepozitory;
 
-class ProductManagerTest {
+class ProductTest {
     ProductRepozitory repo = new ProductRepozitory();
     ProductManager manager = new ProductManager(repo);
 
@@ -87,5 +87,16 @@ class ProductManagerTest {
 
     }
 
+    @Test
+    public void NotFoundException() {
+        manager.add(book1);
+        manager.add(book5);
 
+
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            repo.removeById(3);
+        });
+
+
+    }
 }
